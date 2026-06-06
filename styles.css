@@ -523,19 +523,13 @@ a.grid-link:hover {
 .header-lastfm {
 	display: none;
 	align-items: center;
-	gap: 0.6rem;
-	padding: 0.35rem 0.65rem;
-	border-radius: 0.4rem;
+	gap: 0.75rem;
+	padding: 0.45rem 0.7rem;
 	color: var(--text);
-	font-size: 0.85rem;
-	max-width: 22rem;
+	font-size: 0.95rem;
+	max-width: 60rem;
 	min-width: 0;
 	text-align: left;
-	transition: background-color 0.15s ease;
-}
-
-.header-lastfm:hover {
-	background-color: oklch(from var(--lines) l c h / 0.25);
 }
 
 .header-lastfm-cover-link {
@@ -545,11 +539,10 @@ a.grid-link:hover {
 }
 
 .header-lastfm-cover {
-	width: 32px;
-	height: 32px;
+	width: 48px;
+	height: 48px;
 	object-fit: cover;
 	display: block;
-	border-radius: 0.25rem;
 	background-color: var(--backing);
 }
 
@@ -561,19 +554,19 @@ a.grid-link:hover {
 	min-width: 0;
 	display: flex;
 	flex-direction: column;
-	gap: 0.05rem;
-	line-height: 1.2;
+	gap: 0.1rem;
+	line-height: 1.25;
 	overflow: hidden;
 }
 
 .header-lastfm-profile {
-	font-family: monogram, monospace;
-	font-style: italic;
+	font-family: var(--font-geist-sans);
 	font-size: 0.7rem;
-	opacity: 0.65;
-	color: var(--text);
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: var(--text-accented);
 	text-decoration: none;
-	letter-spacing: 0.02em;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -582,8 +575,8 @@ a.grid-link:hover {
 .header-lastfm-title {
 	color: var(--text-accented);
 	text-decoration: none;
-	font-size: 0.92rem;
-	font-weight: 500;
+	font-size: 1rem;
+	font-weight: 600;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -594,8 +587,8 @@ a.grid-link:hover {
 }
 
 .header-lastfm-meta {
-	font-size: 0.78rem;
-	opacity: 0.7;
+	font-size: 0.875rem;
+	opacity: 0.85;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;

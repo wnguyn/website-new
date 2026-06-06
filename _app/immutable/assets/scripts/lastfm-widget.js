@@ -85,7 +85,7 @@ async function loadLastfm() {
 			root,
 			"time",
 			isNowPlaying
-				? "live"
+				? ""
 				: track.date?.uts
 					? formatRelativeTime(new Date(Number(track.date.uts) * 1000))
 					: "recently",
