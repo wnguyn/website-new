@@ -33,7 +33,7 @@
 
 html,
 body {
-	--default-sans-serif: "Geist Sans", "M PLUS Rounded 1c", ui-sans-serif,
+	--default-sans-serif: "DejaVu Sans LGC", "Geist Sans", "M PLUS Rounded 1c", ui-sans-serif,
 		system-ui, -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI",
 		"Roboto", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
 		"Segoe UI Symbol", "Noto Color Emoji";
@@ -100,7 +100,7 @@ h6 {
 	--lines: #484644;
 	--text: #c4c2bf;
 	--text-accented: #d4d2cf;
-	--font-geist-sans: "Geist Sans", ui-sans-serif, system-ui, -apple-system,
+	--font-geist-sans: "DejaVu Sans LGC", "Geist Sans", ui-sans-serif, system-ui, -apple-system,
 		BlinkMacSystemFont, "Inter", "Segoe UI", "Roboto", sans-serif,
 		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
 		"Noto Color Emoji";
@@ -546,7 +546,7 @@ a.grid-link:hover {
 	font-family: var(--font-geist-sans);
 	font-size: 0.7rem;
 	font-weight: 600;
-	text-transform: uppercase;
+	text-transform: lowercase;
 	letter-spacing: 0.08em;
 	color: var(--text-accented);
 	text-decoration: none;
