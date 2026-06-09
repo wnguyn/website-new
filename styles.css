@@ -318,7 +318,7 @@ button.menu-icon {
 		linear-gradient(90deg, var(--lines) 1px, transparent 1px);
 	background-size: 32px 32px, 32px 32px;
 	background-position: -1px -1px, -1px -1px;
-	animation: grid-scroll 8s linear infinite;
+	/* animation disabled — was causing motion sickness */
 }
 
 .main-surface {
