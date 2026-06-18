@@ -1,6 +1,6 @@
 ---
 title: Analyzing my entire music listening history in Obsidian & Rust
-date: 2026-01-16
+date: 2026-03-16
 description: ""
 ---
 
@@ -27,12 +27,12 @@ The key gimmick at hand is making connections using [[]] for genres which I fetc
 
 While MusicBrainz isn't as hardcore for genres unlike various other websites on the information superhighway (RYM) I would say it's good enough: it obviously doesn't place an Indietronica album as a Pop album. Writing this basic program I had mapped all my music palette from thorough-out the years. I would say most of it is pretty embarrassing, but I mean I would say if I'm older I'd look back at my current taste as embarrassing no?
 
-You can see this POC in my website https://obsidian.wngyn.net which uses quartz as a frontend. This has only started to chart data from the Subsonic API around the time of writing this. 
+You can see this POC in my website https://obsidian.wngyn.net which uses quartz as a basic frontend. This has only started to chart data from the Subsonic API around the time of writing this. 3
 
 Obviously, while this is very gimmicky, I still think there is some use of this in charting long term data. It's pretty interesting seeing a generic genre called "rock" diverge into all the random subcategories that connect to it.
 
 [UPDT: June 9th 2026]
-Now that it has been around half a year (wow) I decided to make the Quartz GUI more interactive and added a color scheme. Here lies the final photo of all the accumulated listens:
+Now that we're halfway through the year I decided to make the Quartz GUI more interactive and added a color scheme. Here lies the final photo of all the accumulated listens:
 
 ![alt text](https://files.catbox.moe/m724ms)
 I also realized that I left this program to work such that it displays the exact UTC date instead of UTC-6, but whatever.

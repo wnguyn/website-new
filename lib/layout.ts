@@ -20,17 +20,25 @@ const NAV_LINKS: Record<NavKey, { href: string; label: string; icon: string }> =
 	},
 };
 
-const NAME_DISPLAY: Record<NavKey, string> = {
-	home: "welcome",
-	blog: "website!",
-	credits: "website!!",
+// what shows in the wordmark per section
+const WORDMARK: Record<NavKey, string> = {
+	home: "will",
+	blog: "will",
+	credits: "will",
+};
+
+// a small label that sits under the wordmark, per section
+const SECTION_LABEL: Record<NavKey, string> = {
+	home: "home",
+	blog: "posts",
+	credits: "about",
 };
 
 function navHtml(active: NavKey): string {
 	return Object.entries(NAV_LINKS)
 		.map(([key, link]) => {
 			const isActive = key === active;
-			return `<a href="${link.href}"${isActive ? ' class="nav-active"' : ""}>
+			return `<a href="${link.href}" class="nav-item${isActive ? " is-active" : ""}">
 				<span class="nav-icon">${link.icon}</span>
 				<div class="nav-label">${link.label}</div>
 			</a>`;
@@ -68,7 +76,8 @@ type ShellOpts = {
 
 function renderShell(opts: ShellOpts): string {
 	const { title, description, path, navActive, body } = opts;
-	const name = NAME_DISPLAY[navActive];
+	const wordmark = WORDMARK[navActive];
+	const sectionLabel = SECTION_LABEL[navActive];
 	return `<!doctype html>
 <html lang="en">
 	<head>
@@ -87,15 +96,16 @@ function renderShell(opts: ShellOpts): string {
 		<meta name="twitter:description" content="${escapeHtml(description)}" />
 
 		<title>wngyn.net</title>
-		<link rel="stylesheet" href="/styles.css" />
+		<link rel="stylesheet" href="/styles.css?v=4" />
 		<script src="/_app/immutable/assets/scripts/lastfm-widget.js" defer></script>
+		<script src="/_app/immutable/assets/scripts/flowfield.js" defer></script>
 	</head>
 	<body>
-		<div class="the-whole-ass-thing">
-			<div class="main-surface">
-				<header>
-					<div class="name-display">
-						<b>${escapeHtml(name)}</b>
+		<div class="site">
+			<div class="shell">
+				<header class="site-header">
+					<div class="wordmark">
+						<b>${escapeHtml(wordmark)}</b>
 					</div>
 					<div class="header-lastfm" data-lastfm aria-label="Last played">
 						<a class="header-lastfm-cover-link" data-lastfm-link target="_blank" rel="noopener noreferrer" title="View on Last.fm">
@@ -111,12 +121,16 @@ function renderShell(opts: ShellOpts): string {
 						</div>
 					</div>
 				</header>
-					<nav>
+					<nav class="topbar">
 						${navHtml(navActive)}
 					</nav>
-					<main class="main-panel">
+					<main class="content">
 ${body}
 					</main>
+					<footer class="site-footer">
+						<span class="footer-mark">${escapeHtml(sectionLabel)} · wngyn.net</span>
+						<span>made by hand · <a href="/credits">about</a></span>
+					</footer>
 				</div>
 			</div>
 	</body>
@@ -140,7 +154,7 @@ function postListItem(post: Post): string {
 
 export function renderIndex(posts: Post[]): string {
 	const body = `\t\t\t\t\t<article>
-\t\t\t\t\t\t<div role="separator" class="pixel-display title-separator">------------------------------------</div>
+\t\t\t\t\t\t<div class="rule" role="separator"><span class="rule-mark">◇ ◆ ◇</span></div>
 \t\t\t\t\t\t<h2>Posts</h2>
 \t\t\t\t\t\t<p>Essentially write-ups for personal projects.</p>
 						<section>
@@ -160,7 +174,7 @@ ${posts.map((p) => postListItem(p)).join("\n\t\t\t\t\t\t\t\t\t\t\t")}
 
 export function renderPostPage(post: Post): string {
 	const body = `\t\t\t\t\t<article>
-\t\t\t\t\t\t<div role="separator" class="pixel-display title-separator">------------------------------------</div>
+\t\t\t\t\t\t<div class="rule" role="separator"><span class="rule-mark">◇ ◆ ◇</span></div>
 						<p class="post-back"><a href="/blog">← posts</a></p>
 						<h2>${escapeHtml(post.frontmatter.title)}</h2>
 						<p class="post-date">${escapeHtml(formatDate(post.frontmatter.date))}</p>

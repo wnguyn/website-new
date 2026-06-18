@@ -1,3 +1,4 @@
+/* ── faces ─────────────────────────────────────────── */
 @font-face {
 	font-family: "Geist Sans";
 	src: url("./_app/immutable/assets/Geist-Variable.woff2") format("woff2");
@@ -22,6 +23,7 @@
 	font-display: swap;
 }
 
+/* ── reset ─────────────────────────────────────────── */
 *,
 *:before,
 *:after {
@@ -45,7 +47,7 @@ body {
 }
 
 body {
-	background-color: var(--backing);
+	background-color: var(--main-bg);
 	color: var(--text);
 	line-height: 1.5;
 	-webkit-font-smoothing: antialiased;
@@ -90,6 +92,7 @@ h6 {
 	text-wrap: balance;
 }
 
+/* ── palette ───────────────────────────────────────── */
 :root {
 	--blue: #a4988e;
 	--green: #7a8a64;
@@ -104,6 +107,7 @@ h6 {
 		BlinkMacSystemFont, "Inter", "Segoe UI", "Roboto", sans-serif,
 		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
 		"Noto Color Emoji";
+	--rule-glow: 0 0 6px oklch(from var(--blue) l c h / 0.25);
 }
 
 *::selection {
@@ -111,7 +115,8 @@ h6 {
 	color: var(--main-bg);
 }
 
-.pixel-display,
+/* ── display type ──────────────────────────────────── */
+.display,
 h1 {
 	font-family: monogram, monospace;
 	font-style: italic;
@@ -168,35 +173,100 @@ ul li {
 	margin-bottom: 0.3rem;
 }
 
-nav a {
+/* ── site frame ────────────────────────────────────── */
+
+/* outer wrapper: transparent so the flowfield canvas shows through */
+.site {
+	align-content: center;
+	min-height: 100%;
 	display: flex;
-	gap: 10px;
-	padding: 0.75rem 1rem;
-	font-weight: 500;
-	text-decoration: none;
-	color: var(--text);
+	flex-direction: column;
+	background-color: transparent;
+	position: relative;
+}
+
+/* grid lines on a pseudo-layer between flowfield and panel */
+.site::before {
+	content: "";
+	position: fixed;
+	inset: 0;
+	z-index: -1;
+	pointer-events: none;
+	background-image:
+		linear-gradient(var(--lines) 1px, transparent 1px),
+		linear-gradient(90deg, var(--lines) 1px, transparent 1px);
+	background-size: 32px 32px, 32px 32px;
+	background-position: -1px -1px, -1px -1px;
+	opacity: 0.35;
+}
+
+/* the content panel: translucent so the field reads faintly behind text */
+.shell {
+	background-color: oklch(from var(--main-bg) l c h / 0.92);
+	backdrop-filter: blur(2px);
+	-webkit-backdrop-filter: blur(2px);
+	max-width: 72rem;
+	height: 100%;
+	width: 100%;
+	align-self: center;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	box-shadow: 0 0 48px #00000055;
+	justify-content: stretch;
+	border-left: 2px solid var(--lines);
+	border-right: 2px solid var(--lines);
+}
+
+/* ── topbar: wordmark + last.fm ────────────────────── */
+.site-header {
+	background-color: var(--main-bg);
+	display: flex;
+	padding: 0.75rem 1.5rem;
+	border-bottom: 2px solid var(--lines);
+	gap: 1rem;
+	position: sticky;
+	top: 0;
+	z-index: 6969;
 	align-items: center;
+	flex-grow: 0;
 }
 
-.nav-icon {
-	width: 22px;
-	height: 22px;
+.wordmark {
+	display: flex;
+	flex-direction: column;
+	line-height: 1;
+	align-self: center;
+	min-width: 0;
+	gap: 0.1rem;
 }
 
-.nav-active {
-	background: linear-gradient(180deg, var(--blue) 0%, var(--main-bg) 100%);
-	color: var(--main-bg);
+.wordmark b {
+	color: var(--text-accented);
+	font-size: 1.9rem;
 }
 
-nav a:not(.nav-active):hover {
-	background: linear-gradient(
-		180deg,
-		rgba(72, 70, 68, 0.35) 0%,
-		transparent 100%
-	);
+/* blinking terminal cursor next to the wordmark */
+.wordmark b::after {
+	content: "▮";
+	color: var(--green);
+	margin-left: 0.35ch;
+	font-style: normal;
+	font-size: 0.75em;
+	animation: caret-blink 1.1s steps(1) infinite;
 }
 
-nav {
+@keyframes caret-blink {
+	0%, 50% { opacity: 1; }
+	51%, 100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.wordmark b::after { animation: none; opacity: 0.7; }
+}
+
+/* ── nav ───────────────────────────────────────────── */
+.topbar {
 	border-right: none;
 	flex-grow: 0;
 	width: 100%;
@@ -210,90 +280,54 @@ nav {
 	flex-direction: row;
 }
 
-header {
-	background-color: var(--main-bg);
+.nav-item {
 	display: flex;
-	padding: 0.75rem 0.75rem 0.75rem 1.5rem;
-	border-bottom: 2px solid var(--lines);
-	gap: 1rem;
-	position: sticky;
-	top: 0;
-	z-index: 6969;
+	gap: 10px;
+	padding: 0.75rem 1rem;
+	font-weight: 500;
+	text-decoration: none;
+	color: var(--text);
 	align-items: center;
-	flex-grow: 0;
-	max-height: 5.625rem;
+	position: relative;
 }
 
-.silly-fella {
-	max-height: 4rem;
-	max-width: 4rem;
-	background-color: var(--blue);
-	margin: 0;
+.nav-icon {
+	width: 22px;
+	height: 22px;
 }
 
-.name-display {
-	display: flex;
-	flex-direction: column;
-	line-height: 1;
-	align-self: center;
-	min-width: 0;
-	gap: 0.1rem;
-	padding-bottom: 0.5rem;
-}
-
-.name-display b,
-.name-display div {
+/* active item: underline accent, not a gradient fill */
+.nav-item.is-active {
 	color: var(--text-accented);
 }
 
-.name-display b {
-	font-size: 1.9rem;
+.nav-item.is-active::after {
+	content: "";
+	position: absolute;
+	left: 1rem;
+	right: 1rem;
+	bottom: 0.25rem;
+	height: 2px;
+	background: var(--blue);
+	box-shadow: var(--rule-glow);
 }
 
-@keyframes grid-scroll {
-	0% { background-position: -1px -1px, -1px -1px; }
-	100% { background-position: -31px 31px, -31px 31px; }
+.nav-item:not(.is-active):hover {
+	color: var(--text-accented);
 }
 
-.the-whole-ass-thing {
-	align-content: center;
-	min-height: 100%;
-	display: flex;
-	flex-direction: column;
-	background-color: #18161480;
-	background-image:
-		linear-gradient(var(--lines) 1px, transparent 1px),
-		linear-gradient(90deg, var(--lines) 1px, transparent 1px);
-	background-size: 32px 32px, 32px 32px;
-	background-position: -1px -1px, -1px -1px;
-	/* animation disabled — was causing motion sickness */
+.nav-item:not(.is-active):hover::after {
+	content: "";
+	position: absolute;
+	left: 1rem;
+	right: 1rem;
+	bottom: 0.25rem;
+	height: 2px;
+	background: var(--lines);
 }
 
-.main-surface {
-	background-color: var(--main-bg);
-	max-width: 72rem;
-	height: 100%;
-	width: 100%;
-	align-self: center;
-	display: flex;
-	flex-direction: column;
-	flex-grow: 1;
-	box-shadow: 0 0 32px #00000032;
-	justify-content: stretch;
-	border-left: 2px solid var(--lines);
-	border-right: 2px solid var(--lines);
-}
-
-.main-split {
-	display: flex;
-	flex-direction: column;
-	flex-grow: 1;
-	max-width: 100%;
-	overflow-y: clip;
-	overflow-x: clip;
-}
-
-.main-panel {
+/* ── content area ──────────────────────────────────── */
+.content {
 	display: flex;
 	flex-direction: column;
 	gap: 1.4rem;
@@ -305,45 +339,80 @@ header {
 	position: relative;
 }
 
+/* CSS-drawn section rule: line + centered diamond, replaces ASCII dashes */
+.rule {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	margin: 0 0 -0.4rem;
+	opacity: 45%;
+}
+
+.rule::before,
+.rule::after {
+	content: "";
+	flex: 1;
+	height: 1px;
+	background: linear-gradient(
+		90deg,
+		transparent 0%,
+		var(--lines) 20%,
+		var(--lines) 80%,
+		transparent 100%
+	);
+}
+
+.rule-mark {
+	color: var(--blue);
+	font-family: monogram, monospace;
+	font-style: italic;
+	font-size: 1.1rem;
+	line-height: 1;
+	filter: drop-shadow(var(--rule-glow));
+	white-space: nowrap;
+}
+
+/* the old ASCII separators, neutralized so legacy markup still renders clean */
+.title-separator {
+	display: none;
+}
+
+/* ── footer ────────────────────────────────────────── */
+.site-footer {
+	margin-top: 4rem;
+	padding: 1.5rem 5rem;
+	border-top: 2px solid var(--lines);
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem 1.5rem;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 0.8rem;
+	opacity: 0.6;
+}
+
+.site-footer .footer-mark {
+	font-family: monogram, monospace;
+	font-style: italic;
+	color: var(--text-accented);
+}
+
+.site-footer a {
+	text-decoration: none;
+}
+
+.site-footer a:hover {
+	text-decoration: underline;
+}
+
+/* legacy footer hook */
 .footer {
 	margin-top: 4rem;
 	text-align: center;
 	font-size: 0.85rem;
 }
 
-.title-separator {
-	font-size: 48px;
-	opacity: 20%;
-	overflow: hidden;
-	margin-bottom: -0.4rem;
-  margin: 0;
-}
-
-.bootleg-heart {
-	pointer-events: none;
-	user-select: none;
-	position: absolute;
-	z-index: -1;
-	opacity: 14%;
-}
-
-.heart-pos-0 {
-	top: 15%;
-	left: -5rem;
-}
-.heart-pos-1 {
-	top: 61%;
-	left: -4.5rem;
-}
-.heart-pos-2 {
-	top: 44%;
-	right: -2.5rem;
-}
-.heart-pos-3 {
-	top: 87%;
-	right: -3rem;
-}
-
+/* ── social grid (home) ────────────────────────────── */
 .button-grid {
 	width: fit-content;
 	contain: paint;
@@ -378,20 +447,7 @@ a.grid-link:hover {
 	color: var(--main-bg);
 }
 
-.mentha-lamie {
-	user-select: none;
-	pointer-events: none;
-	position: absolute;
-	z-index: -1;
-	opacity: 20%;
-	top: 6rem;
-	right: 3rem;
-	height: 84rem;
-	max-width: 42rem;
-	object-fit: contain;
-	object-position: top center;
-}
-
+/* ── posts list ────────────────────────────────────── */
 .posts {
 	display: flex;
 	flex-direction: column;
@@ -404,6 +460,11 @@ a.grid-link:hover {
 	padding: 1.2rem 0;
 	text-decoration: none;
 	color: var(--text);
+	transition: padding-left 0.15s ease;
+}
+
+.posts .post:hover {
+	padding-left: 0.5rem;
 }
 
 .posts .post * {
@@ -444,11 +505,16 @@ a.grid-link:hover {
 	line-height: 1.05;
 }
 
+.posts .post:hover .title {
+	color: var(--text-accented);
+}
+
 .posts .post .date {
 	opacity: 50%;
 	font-size: 0.875rem;
 }
 
+/* ── last.fm widget ────────────────────────────────── */
 .header-lastfm {
 	display: flex;
 	align-items: center;
@@ -526,6 +592,8 @@ a.grid-link:hover {
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
+
+/* ── single post ───────────────────────────────────── */
 .post-date {
 	opacity: 50%;
 	font-size: 0.875rem;
@@ -695,4 +763,29 @@ a.grid-link:hover {
 	background-color: var(--backing);
 	color: var(--text-accented);
 	font-weight: 500;
+}
+
+/* ── responsive ────────────────────────────────────── */
+@media (max-width: 640px) {
+	.content {
+		margin: 2rem 1.25rem;
+	}
+	.site-footer {
+		padding: 1.25rem 1.25rem;
+	}
+	.header-lastfm {
+		display: none;
+	}
+	.nav-item .nav-label {
+		display: none;
+	}
+}
+
+@media (max-width: 420px) {
+	.topbar {
+		top: 4.5rem;
+	}
+	.nav-item {
+		padding: 0.6rem 0.75rem;
+	}
 }

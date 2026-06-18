@@ -16,15 +16,16 @@
 		<meta name="twitter:description" content="Stuff and people who made this website possible!" />
 
 		<title>wngyn.net</title>
-		<link rel="stylesheet" href="./styles.css" />
+		<link rel="stylesheet" href="./styles.css?v=4" />
 		<script src="./_app/immutable/assets/scripts/lastfm-widget.js" defer></script>
+		<script src="./_app/immutable/assets/scripts/flowfield.js" defer></script>
 	</head>
 	<body>
-		<div class="the-whole-ass-thing">
-			<div class="main-surface">
-				<header>
-					<div class="name-display">
-						<b>website!!</b>
+		<div class="site">
+			<div class="shell">
+				<header class="site-header">
+					<div class="wordmark">
+						<b>will</b>
 					</div>
 					<div class="header-lastfm" data-lastfm aria-label="Last played">
 						<a class="header-lastfm-cover-link" data-lastfm-link target="_blank" rel="noopener noreferrer" title="View on Last.fm">
@@ -34,48 +35,51 @@
 							<a class="header-lastfm-profile" data-lastfm-profile target="_blank" rel="noopener noreferrer">Last Played</a>
 							<a class="header-lastfm-title" data-lastfm-link target="_blank" rel="noopener noreferrer"><span data-lastfm-title>loading…</span></a>
 							<div class="header-lastfm-meta">
-                <span data-lastfm-artist></span>
+								<span data-lastfm-artist></span>
 								<span data-lastfm-time></span>
 							</div>
 						</div>
 					</div>
 				</header>
-					<nav>
-						<a href="./">
-							<span class="nav-icon">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-							</span>
-							<div class="nav-label">Home</div>
-						</a>
-						<a href="./blog">
-							<span class="nav-icon">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/></svg>
-							</span>
-							<div class="nav-label">Posts</div>
-						</a>
-						<a href="./credits" class="nav-active">
-							<span class="nav-icon">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-							</span>
-							<div class="nav-label">About</div>
-						</a>
-					</nav>
-					<main class="main-panel">
-						<article>
-							<div role="separator" class="pixel-display title-separator">------------------------------------</div>
-              <h2>About </h2>
-              <p>I've been living in the DFW area all my life. I'm a first year EE but I would say I "enjoy" programming in my free time.</p>
+				<nav class="topbar">
+					<a href="./" class="nav-item">
+						<span class="nav-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+						</span>
+						<div class="nav-label">Home</div>
+					</a>
+					<a href="./blog" class="nav-item">
+						<span class="nav-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/></svg>
+						</span>
+						<div class="nav-label">Posts</div>
+					</a>
+					<a href="./credits" class="nav-item is-active">
+						<span class="nav-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+						</span>
+						<div class="nav-label">About</div>
+					</a>
+				</nav>
+				<main class="content">
+					<article>
+						<div class="rule" role="separator"><span class="rule-mark">◇ ◆ ◇</span></div>
+						<h2>About</h2>
+						<p>I've been living in the DFW area all my life. I'm a first year EE but I would say I "enjoy" programming in my free time.</p>
 
-              <p>This website is currently being hosted in my closet on one of my servers using Deno. At the very least, if you're reading this, it's online then. </p>
-              <p>I occasionally write about projects and things I'm working on over on the posts page, but I don't intend much other than that.
-              This website may be somewhat unremarkable, but I mean it's mine.</p>
+						<p>This website is currently being hosted in my closet on one of my servers using Deno. At the very least, if you're reading this, it's online then.</p>
 
-              <p>I also like listening to <a href="https://en.wikipedia.org/wiki/Math_rock">Math Rock.</a></p>
+						<p>I occasionally write about projects and things I'm working on over on the posts page, but I don't intend much other than that. This website may be somewhat unremarkable, but I mean it's mine.</p>
 
-              <p>Regardless, thank you for checking out my website.</p>
-						</article>
-					</main>
-				</div>
+						<p>I also like listening to <a href="https://rateyourmusic.com/genre/math-rock/">Math Rock.</a> and one of my favorite bands is <a href="https://en.wikipedia.org/wiki/Unwound">Unwound.</a></p>
+
+						<p>Regardless, thank you for checking out my website.</p>
+					</article>
+				</main>
+				<footer class="site-footer">
+					<span class="footer-mark">about · wngyn.net</span>
+					<span>made by hand · <a href="/">home</a></span>
+				</footer>
 			</div>
 		</div>
 	</body>
