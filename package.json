@@ -1,0 +1,12 @@
+{
+	"name": "personal-website",
+	"version": "0.0.1",
+	"type": "module",
+	"scripts": {
+		"dev": "bun run server.ts",
+		"start": "bun run server.ts"
+	},
+	"dependencies": {
+		"marked": "^18.0.5"
+	}
+}
