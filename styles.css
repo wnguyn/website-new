@@ -303,11 +303,12 @@ header {
 footer {
 	margin-top: auto;
 	width: 100%;
-	height: auto;
+	height: 5rem;
 	background-color: var(--main-bg);
 	border-top: 2px solid var(--lines);
 	z-index: 2137;
 	display: flex;
+	align-items: center;
 	flex-direction: row;
 	padding: 0.75rem;
 	font-size: 0.85rem;
@@ -402,6 +403,19 @@ a.grid-link:hover {
 	object-position: top center;
 }
 
+
+
+.projects {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	margin-top: 0.5rem;
+}
+
+.project-desc {
+	font-size: 0.9rem;
+	margin-top: 0.1rem;
+}
 .posts {
 	display: flex;
 	flex-direction: column;
