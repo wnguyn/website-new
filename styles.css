@@ -1,25 +1,22 @@
 @font-face {
-	font-family: "Geist Sans";
-	src: url("./_app/immutable/assets/Geist-Variable.woff2") format("woff2");
-	font-weight: 100 900;
-	font-style: normal;
-	font-display: swap;
+	font-family: "Faune";
+	src:
+		url("./Faune-TextRegular.otf") format("opentype");
+	font-weight: normal;
 }
 
 @font-face {
-	font-family: "monogram";
-	src: url("./_app/immutable/assets/monogram-extended.woff2") format("woff2");
-	font-weight: 700;
-	font-style: normal;
-	font-display: swap;
+	font-family: "Faune";
+	src:
+		url("./Faune-TextBold.otf") format("opentype");
+	font-weight: bold;
 }
 
 @font-face {
-	font-family: "monogram";
-	src: url("./_app/immutable/assets/monogram-extended-italic.woff2") format("woff2");
-	font-weight: 700;
-	font-style: italic;
-	font-display: swap;
+	font-family: "Faune Display";
+	src:
+		url("./Faune-DisplayBlack.otf") format("opentype");
+	font-weight: bold;
 }
 
 *,
@@ -33,7 +30,7 @@
 
 html,
 body {
-	--default-sans-serif: "DejaVu Sans LGC", "Geist Sans", "M PLUS Rounded 1c", ui-sans-serif,
+	--default-sans-serif: "Faune", "DejaVu Sans LGC", "Geist Sans", "M PLUS Rounded 1c", ui-sans-serif,
 		system-ui, -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI",
 		"Roboto", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
 		"Segoe UI Symbol", "Noto Color Emoji";
@@ -91,16 +88,16 @@ h6 {
 }
 
 :root {
-	--blue: #a4988e;
-	--green: #7a8a64;
-	--red: #9a5a52;
-	--orange: #9e8060;
-	--main-bg: #181614;
-	--backing: #2e2c2a;
-	--lines: #484644;
-	--text: #c4c2bf;
-	--text-accented: #d4d2cf;
-	--font-geist-sans: "DejaVu Sans LGC", "Geist Sans", ui-sans-serif, system-ui, -apple-system,
+	--blue: #7a7060;
+	--green: #5a6a44;
+	--red: #7a3a32;
+	--orange: #7d5e3c;
+	--main-bg: #ffffff;
+	--backing: #f5f2ee;
+	--lines: #c3bbb2;
+	--text: #3d3732;
+	--text-accented: #2a2420;
+	--font-geist-sans: "Faune", "DejaVu Sans LGC", "Geist Sans", ui-sans-serif, system-ui, -apple-system,
 		BlinkMacSystemFont, "Inter", "Segoe UI", "Roboto", sans-serif,
 		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
 		"Noto Color Emoji";
@@ -113,8 +110,8 @@ h6 {
 
 .pixel-display,
 h1 {
-	font-family: monogram, monospace;
-	font-style: italic;
+	font-family: "Faune Display", monospace;
+	font-style: normal;
 	font-size: 32px;
 	font-synthesis: none;
 	image-rendering: pixelated;
@@ -179,19 +176,29 @@ nav a {
 }
 
 .nav-icon {
-	width: 22px;
-	height: 22px;
+	width: 24px;
+	height: 24px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+
+.nav-icon svg {
+	width: 100%;
+	height: 100%;
 }
 
 .nav-active {
-	background: linear-gradient(180deg, var(--blue) 0%, var(--main-bg) 100%);
-	color: var(--main-bg);
+	background: linear-gradient(180deg, oklch(from var(--orange) l c h / 0.35) 0%, transparent 100%);
+	color: var(--text-accented);
+	font-weight: 600;
 }
 
 nav a:not(.nav-active):hover {
 	background: linear-gradient(
 		180deg,
-		rgba(72, 70, 68, 0.35) 0%,
+		oklch(from var(--lines) l c h / 0.35) 0%,
 		transparent 100%
 	);
 }
@@ -202,7 +209,7 @@ nav {
 	width: 100%;
 	height: auto;
 	position: sticky;
-	top: 5.625rem;
+	top: 5rem;
 	background-color: var(--main-bg);
 	border-bottom: 2px solid var(--lines);
 	z-index: 2137;
@@ -213,15 +220,13 @@ nav {
 header {
 	background-color: var(--main-bg);
 	display: flex;
-	padding: 0.75rem 0.75rem 0.75rem 1.5rem;
+	padding: 0.75rem 0.75rem 0.75rem 2rem;
 	border-bottom: 2px solid var(--lines);
-	gap: 1rem;
 	position: sticky;
 	top: 0;
 	z-index: 6969;
 	align-items: center;
-	flex-grow: 0;
-	max-height: 5.625rem;
+	height: 5rem;
 }
 
 .silly-fella {
@@ -238,7 +243,7 @@ header {
 	align-self: center;
 	min-width: 0;
 	gap: 0.1rem;
-	padding-bottom: 0.5rem;
+	padding-top: 0.3rem;
 }
 
 .name-display b,
@@ -248,6 +253,9 @@ header {
 
 .name-display b {
 	font-size: 1.9rem;
+	display: flex;
+	align-items: center;
+	line-height: 1;
 }
 
 .the-whole-ass-thing {
@@ -260,7 +268,7 @@ header {
 
 .main-surface {
 	background-color: var(--main-bg);
-	max-width: 72rem;
+	max-width: 54rem;
 	height: 100%;
 	width: 100%;
 	align-self: center;
@@ -292,6 +300,21 @@ header {
 	position: relative;
 }
 
+footer {
+	margin-top: auto;
+	width: 100%;
+	height: auto;
+	background-color: var(--main-bg);
+	border-top: 2px solid var(--lines);
+	z-index: 2137;
+	display: flex;
+	flex-direction: row;
+	padding: 0.75rem;
+	font-size: 0.85rem;
+	color: var(--text);
+	opacity: 0.6;
+}
+
 .footer {
 	margin-top: 4rem;
 	text-align: center;
@@ -299,11 +322,11 @@ header {
 }
 
 .title-separator {
-	font-size: 48px;
-	opacity: 20%;
+	font-size: 18px;
+	font-weight: bold;
+	opacity: 25%;
 	overflow: hidden;
-	margin-bottom: -0.4rem;
-  margin: 0;
+	margin: 0;
 }
 
 .bootleg-heart {
@@ -412,7 +435,7 @@ a.grid-link:hover {
 }
 
 .posts .post .post-numeral {
-	font-family: monogram, monospace;
+	font-family: "Faune Display", monospace;
 	font-style: italic;
 	font-synthesis: none;
 	font-size: 1.5rem;
@@ -425,7 +448,7 @@ a.grid-link:hover {
 .posts .post .title {
 	font-size: 1.5rem;
 	font-weight: 400;
-	font-family: monogram, monospace;
+	font-family: "Faune Display", monospace;
 	font-style: italic;
 	font-synthesis: none;
 	line-height: 1.05;
@@ -547,7 +570,7 @@ a.grid-link:hover {
 .post-body h4,
 .post-body h5,
 .post-body h6 {
-	font-family: monogram, monospace;
+	font-family: "Faune Display", monospace;
 	font-style: italic;
 	font-synthesis: none;
 	font-weight: 400;
