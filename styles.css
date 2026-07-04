@@ -30,7 +30,7 @@
 
 html,
 body {
-	--default-sans-serif: "Faune", "DejaVu Sans LGC", "Geist Sans", "M PLUS Rounded 1c", ui-sans-serif,
+	--default-sans-serif: "DejaVu Sans LGC", "Faune", "Geist Sans", "M PLUS Rounded 1c", ui-sans-serif,
 		system-ui, -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI",
 		"Roboto", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
 		"Segoe UI Symbol", "Noto Color Emoji";
@@ -97,7 +97,7 @@ h6 {
 	--lines: #c3bbb2;
 	--text: #3d3732;
 	--text-accented: #2a2420;
-	--font-geist-sans: "Faune", "DejaVu Sans LGC", "Geist Sans", ui-sans-serif, system-ui, -apple-system,
+	--font-geist-sans: "DejaVu Sans LGC", "Faune", "Geist Sans", ui-sans-serif, system-ui, -apple-system,
 		BlinkMacSystemFont, "Inter", "Segoe UI", "Roboto", sans-serif,
 		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
 		"Noto Color Emoji";
@@ -110,7 +110,7 @@ h6 {
 
 .pixel-display,
 h1 {
-	font-family: "Faune Display", monospace;
+	font-family: "DejaVu Sans LGC", "Faune Display", monospace;
 	font-style: normal;
 	font-size: 32px;
 	font-synthesis: none;
@@ -449,7 +449,7 @@ a.grid-link:hover {
 }
 
 .posts .post .post-numeral {
-	font-family: "Faune Display", monospace;
+	font-family: "DejaVu Sans LGC", "Faune Display", monospace;
 	font-style: italic;
 	font-synthesis: none;
 	font-size: 1.5rem;
@@ -462,7 +462,7 @@ a.grid-link:hover {
 .posts .post .title {
 	font-size: 1.5rem;
 	font-weight: 400;
-	font-family: "Faune Display", monospace;
+	font-family: "DejaVu Sans LGC", "Faune Display", monospace;
 	font-style: italic;
 	font-synthesis: none;
 	line-height: 1.05;
@@ -584,7 +584,7 @@ a.grid-link:hover {
 .post-body h4,
 .post-body h5,
 .post-body h6 {
-	font-family: "Faune Display", monospace;
+	font-family: "DejaVu Sans LGC", "Faune Display", monospace;
 	font-style: italic;
 	font-synthesis: none;
 	font-weight: 400;
