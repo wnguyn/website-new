@@ -62,7 +62,7 @@ function renderShell(opts: ShellOpts): string {
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=0.7" />
-		<meta name="theme-color" content="#6878a0" />
+		<meta name="theme-color" content="#1f1f28" />
 		<meta name="description" content="${escapeHtml(description)}" />
 		<meta property="og:site_name" content="will's website!" />
 		<meta property="og:url" content="${escapeHtml(path)}" />
@@ -75,7 +75,7 @@ function renderShell(opts: ShellOpts): string {
 		<meta name="twitter:description" content="${escapeHtml(description)}" />
 
 		<title>wngyn.net</title>
-		<link rel="stylesheet" href="/styles.css" />
+		<link rel="stylesheet" href="/styles.css?v=3" />
 
 	</head>
 	<body>

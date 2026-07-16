@@ -88,15 +88,15 @@ h6 {
 }
 
 :root {
-	--blue: #7a7060;
-	--green: #5a6a44;
-	--red: #7a3a32;
-	--orange: #7d5e3c;
-	--main-bg: #ffffff;
-	--backing: #f5f2ee;
-	--lines: #c3bbb2;
-	--text: #3d3732;
-	--text-accented: #2a2420;
+	--blue: #7aa89f;
+	--green: #98bb6c;
+	--red: #e46876;
+	--orange: #ffa066;
+	--main-bg: #1f1f28;
+	--backing: #181820;
+	--lines: #54546d;
+	--text: #dcd7ba;
+	--text-accented: #c8c093;
 	--font-geist-sans: "DejaVu Sans LGC", "Faune", "Geist Sans", ui-sans-serif, system-ui, -apple-system,
 		BlinkMacSystemFont, "Inter", "Segoe UI", "Roboto", sans-serif,
 		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
