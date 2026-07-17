@@ -88,15 +88,15 @@ h6 {
 }
 
 :root {
-	--blue: #7a7060;
-	--green: #5a6a44;
-	--red: #7a3a32;
-	--orange: #7d5e3c;
-	--main-bg: #ffffff;
-	--backing: #f5f2ee;
-	--lines: #c3bbb2;
-	--text: #3d3732;
-	--text-accented: #2a2420;
+	--blue: #302915;
+	--green: #3B6E43;
+	--red: #A0252B;
+	--orange: #966800;
+	--main-bg: #F5F2E8;
+	--backing: #EBE5D2;
+	--lines: #CFC8B0;
+	--text: #161616;
+	--text-accented: #000000;
 	--font-geist-sans: "DejaVu Sans LGC", "Faune", "Geist Sans", ui-sans-serif, system-ui, -apple-system,
 		BlinkMacSystemFont, "Inter", "Segoe UI", "Roboto", sans-serif,
 		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
@@ -104,8 +104,8 @@ h6 {
 }
 
 *::selection {
-	background: var(--text-accented);
-	color: var(--main-bg);
+	background: var(--lines);
+	color: var(--text-accented);
 }
 
 .pixel-display,
@@ -190,7 +190,7 @@ nav a {
 }
 
 .nav-active {
-	background: linear-gradient(180deg, oklch(from var(--orange) l c h / 0.35) 0%, transparent 100%);
+	background: linear-gradient(180deg, oklch(from var(--blue) l c h / 0.35) 0%, transparent 100%);
 	color: var(--text-accented);
 	font-weight: 600;
 }
