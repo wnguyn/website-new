@@ -268,7 +268,7 @@ header {
 
 .main-surface {
 	background-color: var(--main-bg);
-	max-width: 54rem;
+	max-width: 42rem;
 	height: 100%;
 	width: 100%;
 	align-self: center;
@@ -313,8 +313,7 @@ footer {
 	padding: 0.75rem;
 	font-size: 0.85rem;
 	color: var(--text);
-	opacity: 0.6;
-}
+	}
 
 .footer {
 	margin-top: 4rem;
@@ -720,3 +719,4 @@ a.grid-link:hover {
 	color: var(--text-accented);
 	font-weight: 500;
 }
+
