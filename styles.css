@@ -1,22 +1,22 @@
 @font-face {
-	font-family: "Faune";
-	src:
-		url("./Faune-TextRegular.otf") format("opentype");
+	font-family: "Geist";
+	src: url("/_app/immutable/assets/Geist-Variable.woff2") format("woff2");
+	font-weight: 100 900;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "monogram";
+	src: url("/_app/immutable/assets/monogram-extended-italic.woff2") format("woff2");
 	font-weight: normal;
+	font-style: italic;
 }
 
 @font-face {
-	font-family: "Faune";
-	src:
-		url("./Faune-TextBold.otf") format("opentype");
-	font-weight: bold;
-}
-
-@font-face {
-	font-family: "Faune Display";
-	src:
-		url("./Faune-DisplayBlack.otf") format("opentype");
-	font-weight: bold;
+	font-family: "monogram";
+	src: url("/_app/immutable/assets/monogram-extended.woff2") format("woff2");
+	font-weight: normal;
+	font-style: normal;
 }
 
 *,
@@ -30,7 +30,7 @@
 
 html,
 body {
-	--default-sans-serif: "DejaVu Sans LGC", "Faune", "Geist Sans", "M PLUS Rounded 1c", ui-sans-serif,
+	--default-sans-serif: "Geist", "DejaVu Sans LGC", "M PLUS Rounded 1c", ui-sans-serif,
 		system-ui, -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI",
 		"Roboto", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
 		"Segoe UI Symbol", "Noto Color Emoji";
@@ -97,7 +97,7 @@ h6 {
 	--lines: #CFC8B0;
 	--text: #161616;
 	--text-accented: #000000;
-	--font-geist-sans: "DejaVu Sans LGC", "Faune", "Geist Sans", ui-sans-serif, system-ui, -apple-system,
+	--font-geist-sans: "Geist", "DejaVu Sans LGC", ui-sans-serif, system-ui, -apple-system,
 		BlinkMacSystemFont, "Inter", "Segoe UI", "Roboto", sans-serif,
 		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
 		"Noto Color Emoji";
@@ -110,7 +110,7 @@ h6 {
 
 .pixel-display,
 h1 {
-	font-family: "DejaVu Sans LGC", "Faune Display", monospace;
+	font-family: "Geist", "DejaVu Sans LGC", monospace;
 	font-style: normal;
 	font-size: 32px;
 	font-synthesis: none;
@@ -422,11 +422,19 @@ a.grid-link:hover {
 
 .posts .post {
 	display: flex;
-	flex-direction: column;
-	gap: 0.2rem;
+	flex-direction: row;
+	align-items: flex-start;
+	gap: 1rem;
 	padding: 1.2rem 0;
 	text-decoration: none;
 	color: var(--text);
+}
+
+.posts .post .post-text {
+	display: flex;
+	flex-direction: column;
+	gap: 0.2rem;
+	min-width: 0;
 }
 
 .posts .post * {
@@ -441,6 +449,16 @@ a.grid-link:hover {
 	display: none;
 }
 
+.posts .post .post-cover {
+	width: 96px;
+	height: 96px;
+	object-fit: cover;
+	border: 2px solid var(--lines);
+	border-radius: 0.4rem;
+	background-color: var(--backing);
+	flex-shrink: 0;
+}
+
 .posts .post .post-row {
 	display: flex;
 	gap: 0.85rem;
@@ -448,7 +466,7 @@ a.grid-link:hover {
 }
 
 .posts .post .post-numeral {
-	font-family: "DejaVu Sans LGC", "Faune Display", monospace;
+	font-family: "Geist", "DejaVu Sans LGC", monospace;
 	font-style: italic;
 	font-synthesis: none;
 	font-size: 1.5rem;
@@ -461,7 +479,7 @@ a.grid-link:hover {
 .posts .post .title {
 	font-size: 1.5rem;
 	font-weight: 400;
-	font-family: "DejaVu Sans LGC", "Faune Display", monospace;
+	font-family: "Geist", "DejaVu Sans LGC", monospace;
 	font-style: italic;
 	font-synthesis: none;
 	line-height: 1.05;
@@ -554,6 +572,44 @@ a.grid-link:hover {
 	font-size: 0.875rem;
 }
 
+.post-album {
+	font-size: 0.95rem;
+	opacity: 80%;
+}
+
+.post-head {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 1.25rem;
+}
+
+.post-head-text {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+	min-width: 0;
+}
+
+.post-head-text h2 {
+	margin: 0;
+}
+
+.post-hero {
+	margin: 0;
+	flex-shrink: 0;
+}
+
+.post-hero img {
+	width: 260px;
+	max-width: 100%;
+	height: auto;
+	display: block;
+	border: 2px solid var(--lines);
+	border-radius: 0.4rem;
+	background-color: var(--backing);
+}
+
 .post-back {
 	font-size: 0.95rem;
 	opacity: 80%;
@@ -583,7 +639,7 @@ a.grid-link:hover {
 .post-body h4,
 .post-body h5,
 .post-body h6 {
-	font-family: "DejaVu Sans LGC", "Faune Display", monospace;
+	font-family: "Geist", "DejaVu Sans LGC", monospace;
 	font-style: italic;
 	font-synthesis: none;
 	font-weight: 400;

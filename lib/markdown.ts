@@ -4,6 +4,9 @@ export type Frontmatter = {
 	title: string;
 	date: string;
 	description?: string;
+	cover?: string;
+	artist?: string;
+	album?: string;
 };
 
 export type ParsedMarkdown = {
@@ -39,6 +42,9 @@ function parseFrontmatterBlock(block: string): Frontmatter {
 		title,
 		date,
 		description: out.description,
+		cover: out.cover,
+		artist: out.artist,
+		album: out.album,
 	};
 }
 

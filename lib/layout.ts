@@ -1,6 +1,6 @@
 import type { Post } from "./posts.ts";
 
-type NavKey = "home";
+type NavKey = "home" | "musicposting";
 
 const NAV_LINKS: Record<NavKey, { href: string; label: string; icon: string }> = {
 	home: {
@@ -8,10 +8,16 @@ const NAV_LINKS: Record<NavKey, { href: string; label: string; icon: string }> =
 		label: "Home",
 		icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>`,
 	},
+	musicposting: {
+		href: "/blog",
+		label: "musicposting",
+		icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>`,
+	},
 };
 
 const NAME_DISPLAY: Record<NavKey, string> = {
 	home: "website",
+	musicposting: "musicposting",
 };
 
 function navHtml(active: NavKey): string {
@@ -103,11 +109,16 @@ function postListItem(post: Post): string {
 	const desc = post.frontmatter.description
 		? `\n\t\t\t\t\t\t<p class="desc">${escapeHtml(post.frontmatter.description)}</p>`
 		: "";
-	return `<a href="/blog/${encodeURIComponent(post.slug)}" class="post">
-\t\t\t\t\t\t\t<div class="post-row">
-\t\t\t\t\t\t\t\t<h2 class="title">${escapeHtml(post.frontmatter.title)}</h2>
+	const cover = post.frontmatter.cover
+		? `\n\t\t\t\t\t\t<img class="post-cover" src="${escapeHtml(post.frontmatter.cover)}" alt="" loading="lazy" />`
+		: "";
+	return `<a href="/blog/${encodeURIComponent(post.slug)}" class="post">${cover}
+\t\t\t\t\t\t\t<div class="post-text">
+\t\t\t\t\t\t\t\t<div class="post-row">
+\t\t\t\t\t\t\t\t\t<h2 class="title">${escapeHtml(post.frontmatter.title)}</h2>
+\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t<p class="date">${escapeHtml(formatDate(post.frontmatter.date))}</p>${desc}
 \t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t<p class="date">${escapeHtml(formatDate(post.frontmatter.date))}</p>${desc}
 \t\t\t\t\t\t</a>`;
 }
 
@@ -124,19 +135,31 @@ ${posts.map((p) => postListItem(p)).join("\n\t\t\t\t\t\t\t\t\t\t\t")}
 						</section>
 					</article>`;
 	return renderShell({
-		title: "Blog",
+		title: "musicposting",
 		description: "List of blog posts",
 		path: "/blog",
-		navActive: "home",
+		navActive: "musicposting",
 		body,
 	});
 }
 
 export function renderPostPage(post: Post): string {
+	const { cover, artist, album } = post.frontmatter;
+	const albumLine =
+		artist && album
+			? `\n\t\t\t\t\t\t\t\t<p class="post-album">${escapeHtml(artist)} — <i>${escapeHtml(album)}</i></p>`
+			: "";
+	const coverHtml = cover
+		? `\n\t\t\t\t\t\t<figure class="post-hero">\n\t\t\t\t\t\t\t<img src="${escapeHtml(cover)}" alt="${escapeHtml(album ?? post.frontmatter.title)} album cover" />\n\t\t\t\t\t\t</figure>`
+		: "";
 	const body = `\t\t\t\t\t<article>
-						<p class="post-back"><a href="/blog">← posts</a></p>
-						<h2>${escapeHtml(post.frontmatter.title)}</h2>
-						<p class="post-date">${escapeHtml(formatDate(post.frontmatter.date))}</p>
+\t\t\t\t\t\t<p class="post-back"><a href="/blog">← musicposting</a></p>
+\t\t\t\t\t\t<div class="post-head">${coverHtml}
+\t\t\t\t\t\t\t<div class="post-head-text">
+\t\t\t\t\t\t\t\t<h2>${escapeHtml(post.frontmatter.title)}</h2>
+\t\t\t\t\t\t\t\t<p class="post-date">${escapeHtml(formatDate(post.frontmatter.date))}</p>${albumLine}
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t</div>
 \t\t\t\t\t\t<div class="post-body">
 ${post.html.trim()}
 \t\t\t\t\t\t</div>
@@ -145,7 +168,7 @@ ${post.html.trim()}
 		title: post.frontmatter.title,
 		description: post.frontmatter.description ?? post.frontmatter.title,
 		path: `/blog/${post.slug}`,
-		navActive: "home",
+		navActive: "musicposting",
 		body,
 	});
 }
