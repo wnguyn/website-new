@@ -1,5 +1,6 @@
 import { getPost, getPosts } from "./lib/posts.ts";
 import { renderIndex, renderPostPage } from "./lib/layout.ts";
+import { bannedCount, isBlocked, loadBans } from "./lib/security.ts";
 
 const PORT = Number(process.env.PORT ?? 3000);
 
@@ -41,6 +42,25 @@ async function serveFile(path: string): Promise<Response> {
 	});
 }
 
+async function getClientIp(req: Request, server: Bun.Server): Promise<string> {
+	return (
+		req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+		req.headers.get("x-real-ip") ||
+		server.requestIP(req)?.address ||
+		"unknown"
+	);
+}
+
+async function handleHit(req: Request, server: Bun.Server): Promise<Response> {
+	const ip = await getClientIp(req, server);
+	const line = `${new Date().toISOString()} ${ip}\n`;
+	await Bun.write("hits.txt", line, { append: true });
+	return new Response(null, {
+		status: 204,
+		headers: { "Access-Control-Allow-Origin": "*" },
+	});
+}
+
 async function handleBlogIndex(): Promise<Response> {
 	const posts = await getPosts();
 	return new Response(renderIndex(posts), {
@@ -60,9 +80,19 @@ async function handleBlogPost(slug: string): Promise<Response> {
 
 Bun.serve({
 	port: PORT,
-	async fetch(req) {
+	async fetch(req, server) {
+		const ip = await getClientIp(req, server);
+		const ua = req.headers.get("user-agent") ?? "";
+		if (await isBlocked(ip, ua)) {
+			return new Response("Forbidden", { status: 403 });
+		}
+
 		const url = new URL(req.url);
 		let pathname = decodeURIComponent(url.pathname);
+
+		if (pathname === "/s.gif") {
+			return handleHit(req, server);
+		}
 
 		if (pathname === "/blog" || pathname === "/blog/") {
 			return handleBlogIndex();
@@ -93,4 +123,6 @@ Bun.serve({
 	},
 });
 
+await loadBans();
+console.log(`Loaded ${bannedCount()} banned IPs`);
 console.log(`Server running at http://localhost:${PORT}`);

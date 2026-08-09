@@ -1,22 +1,9 @@
 @font-face {
-	font-family: "Faune";
-	src:
-		url("./Faune-TextRegular.otf") format("opentype");
-	font-weight: normal;
-}
-
-@font-face {
-	font-family: "Faune";
-	src:
-		url("./Faune-TextBold.otf") format("opentype");
-	font-weight: bold;
-}
-
-@font-face {
-	font-family: "Faune Display";
-	src:
-		url("./Faune-DisplayBlack.otf") format("opentype");
-	font-weight: bold;
+	font-family: "Geist Sans";
+	src: url("/fonts/Geist-Variable.woff2") format("woff2");
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
 }
 
 *,
@@ -30,7 +17,7 @@
 
 html,
 body {
-	--default-sans-serif: "DejaVu Sans LGC", "Faune", "Geist Sans", "M PLUS Rounded 1c", ui-sans-serif,
+	--default-sans-serif: "Geist Sans", "DejaVu Sans LGC", "M PLUS Rounded 1c", ui-sans-serif,
 		system-ui, -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI",
 		"Roboto", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
 		"Segoe UI Symbol", "Noto Color Emoji";
@@ -88,16 +75,16 @@ h6 {
 }
 
 :root {
-	--blue: #302915;
+	--blue: #31174B;
 	--green: #3B6E43;
 	--red: #A0252B;
 	--orange: #966800;
-	--main-bg: #F5F2E8;
-	--backing: #EBE5D2;
-	--lines: #CFC8B0;
-	--text: #161616;
-	--text-accented: #000000;
-	--font-geist-sans: "DejaVu Sans LGC", "Faune", "Geist Sans", ui-sans-serif, system-ui, -apple-system,
+	--main-bg: #F9F9FE;
+	--backing: #EFEFF7;
+	--lines: #DAD6E2;
+	--text: #1C0230;
+	--text-accented: #1C0230;
+	--font-geist-sans: "Geist Sans", "DejaVu Sans LGC", ui-sans-serif, system-ui, -apple-system,
 		BlinkMacSystemFont, "Inter", "Segoe UI", "Roboto", sans-serif,
 		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
 		"Noto Color Emoji";
@@ -110,7 +97,7 @@ h6 {
 
 .pixel-display,
 h1 {
-	font-family: "DejaVu Sans LGC", "Faune Display", monospace;
+	font-family: "DejaVu Sans LGC", "Lexend", monospace;
 	font-style: normal;
 	font-size: 32px;
 	font-synthesis: none;
@@ -264,11 +251,12 @@ header {
 	display: flex;
 	flex-direction: column;
 	background-color: var(--main-bg);
+	padding-top: 0.75rem;
 }
 
 .main-surface {
 	background-color: var(--main-bg);
-	max-width: 42rem;
+	max-width: 36.5rem;
 	height: 100%;
 	width: 100%;
 	align-self: center;
@@ -292,7 +280,7 @@ header {
 	display: flex;
 	flex-direction: column;
 	gap: 1.4rem;
-	margin: 3.5rem 5rem;
+	margin: 3.5rem 3rem;
 	max-width: 100%;
 	min-width: 0;
 	flex-grow: 1;
@@ -397,7 +385,7 @@ a.grid-link:hover {
 	top: 6rem;
 	right: 3rem;
 	height: 84rem;
-	max-width: 42rem;
+	max-width: 36.5rem;
 	object-fit: contain;
 	object-position: top center;
 }
@@ -414,6 +402,102 @@ a.grid-link:hover {
 .project-desc {
 	font-size: 0.9rem;
 	margin-top: 0.1rem;
+}
+
+.lastfm-track {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	padding: 0.35rem;
+	border-radius: 0.4rem;
+	text-decoration: none;
+	color: var(--text);
+}
+
+.lastfm-cover-link {
+	flex-shrink: 0;
+	display: block;
+	line-height: 0;
+	width: 40px;
+	height: 40px;
+}
+
+.lastfm-cover {
+	width: 40px;
+	height: 40px;
+	max-width: 40px;
+	object-fit: cover;
+	flex-shrink: 0;
+	background-color: var(--backing);
+	border: 1px solid var(--lines);
+}
+
+.lastfm-info {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	line-height: 1.25;
+	text-decoration: none;
+	color: var(--text);
+}
+
+.lastfm-title {
+	color: var(--text-accented);
+	font-weight: 500;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-decoration: none;
+}
+
+.lastfm-title:hover {
+	text-decoration: underline;
+}
+
+.lastfm-meta {
+	font-size: 0.875rem;
+	opacity: 0.8;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.footer-lastfm {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	min-width: 0;
+	width: 100%;
+}
+
+.footer-lastfm .lastfm-track {
+	padding: 0;
+	width: 100%;
+	min-width: 0;
+}
+
+.footer-lastfm .lastfm-cover-link {
+	width: 40px;
+	height: 40px;
+}
+
+.footer-lastfm .lastfm-cover {
+	width: 40px;
+	height: 40px;
+	max-width: 40px;
+}
+
+.footer-lastfm .lastfm-info {
+	flex: 1;
+	min-width: 0;
+}
+
+.footer-lastfm .lastfm-title {
+	font-size: 0.9rem;
+}
+
+.footer-lastfm .lastfm-meta {
+	font-size: 0.8rem;
 }
 .posts {
 	display: flex;
@@ -448,7 +532,7 @@ a.grid-link:hover {
 }
 
 .posts .post .post-numeral {
-	font-family: "DejaVu Sans LGC", "Faune Display", monospace;
+	font-family: "DejaVu Sans LGC", "Lexend", monospace;
 	font-style: italic;
 	font-synthesis: none;
 	font-size: 1.5rem;
@@ -461,7 +545,7 @@ a.grid-link:hover {
 .posts .post .title {
 	font-size: 1.5rem;
 	font-weight: 400;
-	font-family: "DejaVu Sans LGC", "Faune Display", monospace;
+	font-family: "DejaVu Sans LGC", "Lexend", monospace;
 	font-style: italic;
 	font-synthesis: none;
 	line-height: 1.05;
@@ -568,7 +652,7 @@ a.grid-link:hover {
 }
 
 .post-body {
-	max-width: 42rem;
+	max-width: 36.5rem;
 	line-height: 1.6;
 	color: var(--text);
 }
@@ -583,7 +667,7 @@ a.grid-link:hover {
 .post-body h4,
 .post-body h5,
 .post-body h6 {
-	font-family: "DejaVu Sans LGC", "Faune Display", monospace;
+	font-family: "DejaVu Sans LGC", "Lexend", monospace;
 	font-style: italic;
 	font-synthesis: none;
 	font-weight: 400;
