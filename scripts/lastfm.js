@@ -51,14 +51,14 @@ function trackHtml(track) {
 	const cover = pickCoverImage(track.image);
 	const isNowPlaying = track["@attr"]?.nowplaying === "true";
 	const time = isNowPlaying
-		? "now playing"
+		? "playing now"
 		: track.date?.uts
 			? formatRelativeTime(track.date.uts)
 			: "recently";
 	const coverElement = cover
 		? `<a class="lastfm-cover-link lastfm-rym" href="${RYM_URL}" target="_blank" rel="me noopener noreferrer" title="rate your music"><img class="lastfm-cover" src="${escapeHtml(cover)}" alt="" loading="lazy" /></a>`
 		: '<span class="lastfm-cover"></span>';
-	return `<div class="lastfm-track">
+	return `<span class="lastfm-label">listening to...</span><div class="lastfm-track">
 		${coverElement}
 		<span class="lastfm-info">
 			<a class="lastfm-title lastfm-rym" href="${RYM_URL}" target="_blank" rel="me noopener noreferrer" title="rate your music">${escapeHtml(title)}</a>
