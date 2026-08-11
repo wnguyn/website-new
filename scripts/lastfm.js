@@ -1,7 +1,6 @@
 const LASTFM_API_KEY = "eb455c2cb788382b7b5ea8c815f6674b";
 const LASTFM_USERNAME = "MacintoshPlusSE";
 const LASTFM_ROOT = "https://ws.audioscrobbler.com/2.0/";
-const RYM_URL = "https://rateyourmusic.com/~wnguyen7";
 const TRACK_LIMIT = 5;
 const REFRESH_MS = 60 * 1000;
 const ROOT_SELECTOR = "[data-lastfm]";
@@ -15,19 +14,6 @@ function buildLastfmUrl() {
 		limit: String(TRACK_LIMIT),
 	});
 	return `${LASTFM_ROOT}?${params.toString()}`;
-}
-
-function formatRelativeTime(uts) {
-	const seconds = Math.max(0, Math.floor((Date.now() - Number(uts) * 1000) / 1000));
-	if (seconds < 60) return "just now";
-	const minutes = Math.floor(seconds / 60);
-	if (minutes < 60) return `${minutes}m ago`;
-	const hours = Math.floor(minutes / 60);
-	if (hours < 24) return `${hours}h ago`;
-	const days = Math.floor(hours / 24);
-	if (days < 30) return `${days}d ago`;
-	const months = Math.floor(days / 30);
-	return `${months}mo ago`;
 }
 
 function pickCoverImage(images) {
@@ -49,27 +35,21 @@ function trackHtml(track) {
 	const title = track.name || "unknown";
 	const artist = track.artist?.["#text"] || "unknown artist";
 	const cover = pickCoverImage(track.image);
-	const isNowPlaying = track["@attr"]?.nowplaying === "true";
-	const time = isNowPlaying
-		? "playing now"
-		: track.date?.uts
-			? formatRelativeTime(track.date.uts)
-			: "recently";
 	const coverElement = cover
-		? `<a class="lastfm-cover-link lastfm-rym" href="${RYM_URL}" target="_blank" rel="me noopener noreferrer" title="rate your music"><img class="lastfm-cover" src="${escapeHtml(cover)}" alt="" loading="lazy" /></a>`
+		? `<img class="lastfm-cover" src="${escapeHtml(cover)}" alt="" loading="lazy" />`
 		: '<span class="lastfm-cover"></span>';
-	return `<span class="lastfm-label">listening to...</span><div class="lastfm-track">
-		${coverElement}
+	return `${coverElement}
 		<span class="lastfm-info">
-			<a class="lastfm-title lastfm-rym" href="${RYM_URL}" target="_blank" rel="me noopener noreferrer" title="rate your music">${escapeHtml(title)}</a>
-			<span class="lastfm-meta">${escapeHtml(artist)} · ${time}</span>
-		</span>
-	</div>`;
+			<span class="lastfm-title">${escapeHtml(title)}</span>
+			<span class="lastfm-meta">${escapeHtml(artist)}</span>
+		</span>`;
 }
 
 async function loadLastfm() {
 	const root = document.querySelector(ROOT_SELECTOR);
 	if (!root) return;
+	const trackEl = root.querySelector(".lastfm-track");
+	if (!trackEl) return;
 
 	try {
 		const response = await fetch(buildLastfmUrl());
@@ -81,10 +61,10 @@ async function loadLastfm() {
 			throw new Error("No recent tracks found.");
 		}
 
-		root.innerHTML = trackHtml(tracks[0]);
+		trackEl.innerHTML = trackHtml(tracks[0]);
 		root.removeAttribute("data-lastfm-error");
 	} catch (error) {
-		root.textContent = "unavailable";
+		trackEl.textContent = "unavailable";
 		root.setAttribute("data-lastfm-error", "");
 	}
 }
@@ -94,7 +74,16 @@ document.addEventListener("DOMContentLoaded", () => {
 	setInterval(loadLastfm, REFRESH_MS);
 
 	document.addEventListener("click", (event) => {
-		if (!event.target.closest?.(".lastfm-rym")) return;
-		navigator.sendBeacon?.("/s.gif");
+		const toggle = event.target.closest?.(".lastfm-toggle");
+		if (toggle) {
+			event.preventDefault();
+			const root = toggle.closest(ROOT_SELECTOR);
+			const trackEl = root?.querySelector(".lastfm-track");
+			if (!root || !trackEl) return;
+			const willOpen = trackEl.hidden;
+			trackEl.hidden = !willOpen;
+			toggle.setAttribute("aria-expanded", String(willOpen));
+			return;
+		}
 	});
 });

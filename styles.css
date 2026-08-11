@@ -75,15 +75,15 @@ h6 {
 }
 
 :root {
-	--blue: #31174B;
+	--blue: #302915;
 	--green: #3B6E43;
 	--red: #A0252B;
 	--orange: #966800;
-	--main-bg: #F9F9FE;
-	--backing: #EFEFF7;
-	--lines: #DAD6E2;
-	--text: #1C0230;
-	--text-accented: #1C0230;
+	--main-bg: #F5F2E8;
+	--backing: #EBE5D2;
+	--lines: #DDDDDD;
+	--text: #161616;
+	--text-accented: #161616;
 	--font-geist-sans: "Geist Sans", "DejaVu Sans LGC", ui-sans-serif, system-ui, -apple-system,
 		BlinkMacSystemFont, "Inter", "Segoe UI", "Roboto", sans-serif,
 		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
@@ -150,6 +150,10 @@ ul {
 
 ul li {
 	margin-bottom: 0.3rem;
+}
+
+.mail-link {
+	text-decoration: none;
 }
 
 nav a {
@@ -410,16 +414,6 @@ a.grid-link:hover {
 	gap: 0.6rem;
 	padding: 0.35rem;
 	border-radius: 0.4rem;
-	text-decoration: none;
-	color: var(--text);
-}
-
-.lastfm-cover-link {
-	flex-shrink: 0;
-	display: block;
-	line-height: 0;
-	width: 40px;
-	height: 40px;
 }
 
 .lastfm-cover {
@@ -429,7 +423,6 @@ a.grid-link:hover {
 	object-fit: cover;
 	flex-shrink: 0;
 	background-color: var(--backing);
-	border: 1px solid var(--lines);
 }
 
 .lastfm-info {
@@ -437,8 +430,6 @@ a.grid-link:hover {
 	flex-direction: column;
 	min-width: 0;
 	line-height: 1.25;
-	text-decoration: none;
-	color: var(--text);
 }
 
 .lastfm-title {
@@ -447,11 +438,6 @@ a.grid-link:hover {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	text-decoration: none;
-}
-
-.lastfm-title:hover {
-	text-decoration: underline;
 }
 
 .lastfm-meta {
@@ -462,51 +448,41 @@ a.grid-link:hover {
 	text-overflow: ellipsis;
 }
 
-.footer-lastfm {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	justify-content: center;
-	gap: 0.3rem;
+li[data-lastfm] {
 	min-width: 0;
-	width: 100%;
 }
 
-.footer-lastfm .lastfm-label {
-	font-size: 0.75rem;
-	font-weight: 700;
-	text-transform: lowercase;
-	letter-spacing: 0.08em;
-	color: var(--text);
+li[data-lastfm] .lastfm-toggle {
+	color: var(--blue);
+	text-decoration: underline;
 }
 
-.footer-lastfm .lastfm-track {
-	padding: 0;
+li[data-lastfm] .lastfm-track {
+	padding: 0.3rem 0;
 	width: 100%;
 	min-width: 0;
 }
 
-.footer-lastfm .lastfm-cover-link {
-	width: 40px;
-	height: 40px;
+li[data-lastfm] .lastfm-track[hidden] {
+	display: none;
 }
 
-.footer-lastfm .lastfm-cover {
-	width: 40px;
-	height: 40px;
-	max-width: 40px;
+li[data-lastfm] .lastfm-cover {
+	width: 36px;
+	height: 36px;
+	max-width: 36px;
 }
 
-.footer-lastfm .lastfm-info {
+li[data-lastfm] .lastfm-info {
 	flex: 1;
 	min-width: 0;
 }
 
-.footer-lastfm .lastfm-title {
+li[data-lastfm] .lastfm-title {
 	font-size: 0.9rem;
 }
 
-.footer-lastfm .lastfm-meta {
+li[data-lastfm] .lastfm-meta {
 	font-size: 0.8rem;
 }
 .posts {

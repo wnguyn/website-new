@@ -62,7 +62,7 @@ function renderShell(opts: ShellOpts): string {
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=0.7" />
-		<meta name="theme-color" content="#6878a0" />
+		<meta name="theme-color" content="#302915" />
 		<meta name="description" content="${escapeHtml(description)}" />
 		<meta property="og:site_name" content="will's website!" />
 		<meta property="og:url" content="${escapeHtml(path)}" />
