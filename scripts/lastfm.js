@@ -1,6 +1,8 @@
+// you got me.....
 const LASTFM_API_KEY = "eb455c2cb788382b7b5ea8c815f6674b";
 const LASTFM_USERNAME = "MacintoshPlusSE";
 const LASTFM_ROOT = "https://ws.audioscrobbler.com/2.0/";
+const RYM_URL = "https://rateyourmusic.com/~wnguyen7";
 const TRACK_LIMIT = 5;
 const REFRESH_MS = 60 * 1000;
 const ROOT_SELECTOR = "[data-lastfm]";
@@ -36,11 +38,11 @@ function trackHtml(track) {
 	const artist = track.artist?.["#text"] || "unknown artist";
 	const cover = pickCoverImage(track.image);
 	const coverElement = cover
-		? `<img class="lastfm-cover" src="${escapeHtml(cover)}" alt="" loading="lazy" />`
+		? `<a class="lastfm-cover-link lastfm-rym" href="${RYM_URL}" target="_blank" rel="me noopener noreferrer" title="rate your music"><img class="lastfm-cover" src="${escapeHtml(cover)}" alt="" loading="lazy" /></a>`
 		: '<span class="lastfm-cover"></span>';
 	return `${coverElement}
 		<span class="lastfm-info">
-			<span class="lastfm-title">${escapeHtml(title)}</span>
+			<a class="lastfm-title lastfm-rym" href="${RYM_URL}" target="_blank" rel="me noopener noreferrer" title="rate your music">${escapeHtml(title)}</a>
 			<span class="lastfm-meta">${escapeHtml(artist)}</span>
 		</span>`;
 }
@@ -85,5 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			toggle.setAttribute("aria-expanded", String(willOpen));
 			return;
 		}
+		if (!event.target.closest?.(".lastfm-rym")) return;
+		navigator.sendBeacon?.("/s.gif");
 	});
 });

@@ -414,6 +414,16 @@ a.grid-link:hover {
 	gap: 0.6rem;
 	padding: 0.35rem;
 	border-radius: 0.4rem;
+	text-decoration: none;
+	color: var(--text);
+}
+
+.lastfm-cover-link {
+	flex-shrink: 0;
+	display: block;
+	line-height: 0;
+	width: 40px;
+	height: 40px;
 }
 
 .lastfm-cover {
@@ -430,6 +440,8 @@ a.grid-link:hover {
 	flex-direction: column;
 	min-width: 0;
 	line-height: 1.25;
+	text-decoration: none;
+	color: var(--text);
 }
 
 .lastfm-title {
@@ -438,6 +450,11 @@ a.grid-link:hover {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	text-decoration: none;
+}
+
+.lastfm-title:hover {
+	text-decoration: underline;
 }
 
 .lastfm-meta {
@@ -465,6 +482,11 @@ li[data-lastfm] .lastfm-track {
 
 li[data-lastfm] .lastfm-track[hidden] {
 	display: none;
+}
+
+li[data-lastfm] .lastfm-cover-link {
+	width: 36px;
+	height: 36px;
 }
 
 li[data-lastfm] .lastfm-cover {
