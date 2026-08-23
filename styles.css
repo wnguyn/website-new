@@ -1,7 +1,17 @@
+// eventually i'll clean this some day... 
+
 @font-face {
-	font-family: "Geist Sans";
-	src: url("/fonts/Geist-Variable.woff2") format("woff2");
+	font-family: "Figtree";
+	src: url("/fonts/Figtree.woff2") format("woff2");
 	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Fira Code";
+	src: url("/fonts/FiraCode.woff2") format("woff2");
+	font-weight: 300 700;
 	font-style: normal;
 	font-display: swap;
 }
@@ -17,7 +27,7 @@
 
 html,
 body {
-	--default-sans-serif: "Geist Sans", "DejaVu Sans LGC", "M PLUS Rounded 1c", ui-sans-serif,
+	--default-sans-serif: "Figtree", "DejaVu Sans LGC", "M PLUS Rounded 1c", ui-sans-serif,
 		system-ui, -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI",
 		"Roboto", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
 		"Segoe UI Symbol", "Noto Color Emoji";
@@ -32,6 +42,7 @@ body {
 	background-color: var(--backing);
 	color: var(--text);
 	line-height: 1.5;
+	zoom: 1.05;
 	-webkit-font-smoothing: antialiased;
 }
 
@@ -75,16 +86,16 @@ h6 {
 }
 
 :root {
-	--blue: #302915;
+	--blue: #1C0230;
 	--green: #3B6E43;
 	--red: #A0252B;
 	--orange: #966800;
-	--main-bg: #F5F2E8;
-	--backing: #EBE5D2;
+	--main-bg: #F9F9FE;
+	--backing: #F0F0F0;
 	--lines: #DDDDDD;
-	--text: #161616;
-	--text-accented: #161616;
-	--font-geist-sans: "Geist Sans", "DejaVu Sans LGC", ui-sans-serif, system-ui, -apple-system,
+	--text: #1C0230;
+	--text-accented: #1C0230;
+	--font-geist-sans: "Figtree", "DejaVu Sans LGC", ui-sans-serif, system-ui, -apple-system,
 		BlinkMacSystemFont, "Inter", "Segoe UI", "Roboto", sans-serif,
 		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
 		"Noto Color Emoji";
@@ -97,7 +108,7 @@ h6 {
 
 .pixel-display,
 h1 {
-	font-family: "DejaVu Sans LGC", "Lexend", monospace;
+	font-family: "Figtree", "DejaVu Sans LGC", monospace;
 	font-style: normal;
 	font-size: 32px;
 	font-synthesis: none;
@@ -133,6 +144,7 @@ button {
 }
 
 code {
+	font-family: "Fira Code", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
 	padding: 0.15rem;
 	border-radius: 0.4rem;
 	background-color: oklch(from var(--lines) l c h / 0.15);
@@ -243,7 +255,7 @@ header {
 }
 
 .name-display b {
-	font-size: 1.9rem;
+	font-size: 1.7rem;
 	display: flex;
 	align-items: center;
 	line-height: 1;
@@ -260,7 +272,7 @@ header {
 
 .main-surface {
 	background-color: var(--main-bg);
-	max-width: 36.5rem;
+	max-width: 33rem;
 	height: 100%;
 	width: 100%;
 	align-self: center;
@@ -284,7 +296,7 @@ header {
 	display: flex;
 	flex-direction: column;
 	gap: 1.4rem;
-	margin: 3.5rem 3rem;
+	margin: 3.5rem 2rem;
 	max-width: 100%;
 	min-width: 0;
 	flex-grow: 1;
@@ -465,46 +477,46 @@ a.grid-link:hover {
 	text-overflow: ellipsis;
 }
 
-li[data-lastfm] {
+div[data-lastfm] {
 	min-width: 0;
 }
 
-li[data-lastfm] .lastfm-toggle {
+div[data-lastfm] .lastfm-toggle {
 	color: var(--blue);
 	text-decoration: underline;
 }
 
-li[data-lastfm] .lastfm-track {
+div[data-lastfm] .lastfm-track {
 	padding: 0.3rem 0;
 	width: 100%;
 	min-width: 0;
 }
 
-li[data-lastfm] .lastfm-track[hidden] {
+div[data-lastfm] .lastfm-track[hidden] {
 	display: none;
 }
 
-li[data-lastfm] .lastfm-cover-link {
+div[data-lastfm] .lastfm-cover-link {
 	width: 36px;
 	height: 36px;
 }
 
-li[data-lastfm] .lastfm-cover {
+div[data-lastfm] .lastfm-cover {
 	width: 36px;
 	height: 36px;
 	max-width: 36px;
 }
 
-li[data-lastfm] .lastfm-info {
+div[data-lastfm] .lastfm-info {
 	flex: 1;
 	min-width: 0;
 }
 
-li[data-lastfm] .lastfm-title {
+div[data-lastfm] .lastfm-title {
 	font-size: 0.9rem;
 }
 
-li[data-lastfm] .lastfm-meta {
+div[data-lastfm] .lastfm-meta {
 	font-size: 0.8rem;
 }
 .posts {
@@ -540,7 +552,7 @@ li[data-lastfm] .lastfm-meta {
 }
 
 .posts .post .post-numeral {
-	font-family: "DejaVu Sans LGC", "Lexend", monospace;
+	font-family: "Figtree", "DejaVu Sans LGC", monospace;
 	font-style: italic;
 	font-synthesis: none;
 	font-size: 1.5rem;
@@ -553,7 +565,7 @@ li[data-lastfm] .lastfm-meta {
 .posts .post .title {
 	font-size: 1.5rem;
 	font-weight: 400;
-	font-family: "DejaVu Sans LGC", "Lexend", monospace;
+	font-family: "Figtree", "DejaVu Sans LGC", monospace;
 	font-style: italic;
 	font-synthesis: none;
 	line-height: 1.05;
@@ -675,7 +687,7 @@ li[data-lastfm] .lastfm-meta {
 .post-body h4,
 .post-body h5,
 .post-body h6 {
-	font-family: "DejaVu Sans LGC", "Lexend", monospace;
+	font-family: "Figtree", "DejaVu Sans LGC", monospace;
 	font-style: italic;
 	font-synthesis: none;
 	font-weight: 400;
@@ -761,7 +773,7 @@ li[data-lastfm] .lastfm-meta {
 	border-radius: 0.4rem;
 	background-color: oklch(from var(--lines) l c h / 0.18);
 	overflow-x: auto;
-	font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+	font-family: "Fira Code", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
 	font-size: 0.9rem;
 	line-height: 1.45;
 }
@@ -775,7 +787,7 @@ li[data-lastfm] .lastfm-meta {
 }
 
 .post-body code {
-	font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+	font-family: "Fira Code", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
 	font-size: 0.92em;
 }
 

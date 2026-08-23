@@ -4,29 +4,28 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=0.7" />
 		<meta name="theme-color" content="#302915" />
-		<meta property="og:url" content="/" />
+		<meta property="og:url" content="/projects" />
 		<meta property="og:type" content="website" />
-		<meta property="og:title" content="Home" />
+		<meta property="og:title" content="Projects" />
 		<title>wngyn.net</title>
-		<link rel="stylesheet" href="./styles.css?v=7" />
-		<script src="./scripts/lastfm.js" defer></script>
+		<link rel="stylesheet" href="./styles.css?v=14" />
 	</head>
 	<body>
 		<div class="the-whole-ass-thing">
 			<div class="main-surface">
 				<header>
 					<div class="name-display">
-						<b>welcome</b>
+						<b>projects!</b>
 					</div>
 				</header>
 				<nav>
-					<a href="./" class="nav-active">
+					<a href="./">
 						<span class="nav-icon">
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
 						</span>
 						<div class="nav-label">home</div>
 					</a>
-					<a href="./projects.html">
+					<a href="./projects.html" class="nav-active">
 						<span class="nav-icon">
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>
 						</span>
@@ -35,22 +34,25 @@
 				</nav>
 				<main class="main-panel">
 					<article>
-            <p>Hi, I'm Will. Thank you for visting my personal website! It's still under construction...</p>
-						<p></p>
-						<h3>▸ myself</h3>
-						<ul>
-							<li><a href="https://github.com/wnguyn" target="_blank" rel="me noopener noreferrer">git</a> </li>
-							<li><a class="mail-link" href="mailto:me@wngyn.net">mail: me @ (this domain)</a></li>
-							<li>add me on <a href="https://linkedin.com/in/wnguyn" target="_blank" rel="me noopener noreferrer">linkedin</a> </li>
-						</ul>
+						<h3>still under construction...</h3>
+						<div class="projects">
+							<div class="project">
+								<a href="https://github.com/wnguyn/wildflower"><strong>wildflower</strong></a>
+								<div class="project-desc">Rust MPD reimplementation with support for the Subsonic API</div>
+							</div>
+							<div class="project">
+								<a href="https://github.com/wnguyn/bc250gov"><strong>bc250gov</strong></a>
+								<div class="project-desc">C++17 userspace power manager for Cyan Skillfish (AMD BC-250)</div>
+							</div>
+							<div class="project">
+								<a href="https://github.com/wnguyn/nfsv2rs"><strong>nfsv2rs</strong></a>
+								<div class="project-desc">Rust NFSv2 server implementation <em>(WIP)</em></div>
+							</div>
+						</div>
+						<p><a href="https://github.com/wnguyn">...more on github →</a></p>
 					</article>
 				</main>
-				<footer>
-					<div data-lastfm>
-						<h3>i'm listening to...</h3>
-						<div class="lastfm-track">loading...</div>
-					</div>
-				</footer>
+				<footer></footer>
 			</div>
 		</div>
 	</body>
