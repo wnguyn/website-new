@@ -8,15 +8,25 @@
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content="Home" />
 		<title>wngyn.net</title>
-		<link rel="stylesheet" href="./styles.css?v=7" />
+		<link rel="icon" type="image/jpeg" href="https://files.catbox.moe/5ms3b2.jpg" />
+		<link rel="stylesheet" href="./styles.css?v=20" />
 		<script src="./scripts/lastfm.js" defer></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", () => {
+			const d = new Date();
+			const days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+			const months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+			document.getElementById("welcome-title").textContent =
+				`${days[d.getDay()]}, ${months[d.getMonth()]}. ${d.getDate()}`;
+		});
+	</script>
 	</head>
 	<body>
 		<div class="the-whole-ass-thing">
 			<div class="main-surface">
 				<header>
 					<div class="name-display">
-						<b>welcome</b>
+						<b id="welcome-title">welcome</b>
 					</div>
 				</header>
 				<nav>
@@ -30,24 +40,23 @@
 						<span class="nav-icon">
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>
 						</span>
-						<div class="nav-label">projects</div>
+						<div class="nav-label">work</div>
 					</a>
 				</nav>
 				<main class="main-panel">
 					<article>
-            <p>Hi, I'm Will. Thank you for visting my personal website! It's still under construction...</p>
+            <p>Hi, I'm Will. Thank you for visiting my personal website!</p>
 						<p></p>
-						<h3>▸ myself</h3>
+						<h3>▸ me</h3>
 						<ul>
-							<li><a href="https://github.com/wnguyn" target="_blank" rel="me noopener noreferrer">git</a> </li>
-							<li><a class="mail-link" href="mailto:me@wngyn.net">mail: me @ (this domain)</a></li>
-							<li>add me on <a href="https://linkedin.com/in/wnguyn" target="_blank" rel="me noopener noreferrer">linkedin</a> </li>
+							<li>you can view my git repos <a href="https://github.com/wnguyn" target="_blank" rel="me noopener noreferrer">here</a> </li>
+							<li>talk to me about anything at <a class="mail-link" href="mailto:me@wngyn.net" target="_blank">me@wngyn.net</a> (I don't bite!)</li>
 						</ul>
 					</article>
 				</main>
 				<footer>
 					<div data-lastfm>
-						<h3>i'm listening to...</h3>
+						<h3>I'm listening to...</h3>
 						<div class="lastfm-track">loading...</div>
 					</div>
 				</footer>

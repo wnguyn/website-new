@@ -75,7 +75,8 @@ function renderShell(opts: ShellOpts): string {
 		<meta name="twitter:description" content="${escapeHtml(description)}" />
 
 		<title>wngyn.net</title>
-		<link rel="stylesheet" href="/styles.css" />
+		<link rel="icon" type="image/jpeg" href="https://files.catbox.moe/5ms3b2.jpg" />
+		<link rel="stylesheet" href="/styles.css?v=20" />
 
 	</head>
 	<body>
